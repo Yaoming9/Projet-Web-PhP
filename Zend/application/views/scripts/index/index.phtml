@@ -1,0 +1,296 @@
+<div class="container-fluid">
+	<div class="row" id="carousel">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="<?php echo $this->baseUrl().'/imgs/carousel1.jpg' ?>" alt="..." data-holder-rendered="true">
+		    </div>
+		    <div class="item">
+		      <img src="<?php echo $this->baseUrl().'/imgs/carousel2.jpg' ?>" alt="..." data-holder-rendered="true">
+		    </div>
+		    <div class="item">
+		      <img src="<?php echo $this->baseUrl().'/imgs/carousel3.jpg' ?>" alt="..." data-holder-rendered="true">
+		    </div>
+		    <div class="item">
+		      <img src="<?php echo $this->baseUrl().'/imgs/carousel4.jpg' ?>" alt="..." data-holder-rendered="true">
+		    </div>
+		    <div class="item">
+		      <img src="<?php echo $this->baseUrl().'/imgs/carousel5.jpg' ?>" alt="..." data-holder-rendered="true">
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-9" id="bloc_produits">
+			<div class="row">
+				<img id="boutique-noel" src="<?php echo $this->baseUrl().'/imgs/boutique-noël.jpg' ?>" alt="img_boutique-noël"/>
+			</div>		
+			<?php 
+			$i = 1;
+			$k = 1;
+			if (is_array($this->categoriesProduits) && count($this->categoriesProduits) > 0)
+			{
+				foreach ($this->categoriesProduits as $categorie)
+				{
+					?>
+					<div class="row row_carousel">
+						<h4><?php echo $categorie['nom'] ?><a href="#" class="lien_voir_plus">Voir plus</a></h4>
+						<div class="carousel_produits" id="<?php echo 'carousel_'.$i?>">
+							<ul>
+					<?php
+					if (is_array($categorie['produits']) && count($categorie['produits']) > 0 )
+					{
+						$j = 0;
+						foreach ($categorie['produits'] as $produit) 
+						{ 
+							if ($j == 0)
+							{?>
+								<li class="carousel-item first">
+							<?php 
+							}
+							
+							else if ($j == count($categorie['produits']) - 1)
+							{?>
+								<li class="carousel-item last">
+							<?php 
+							}
+							else
+							{?>
+								<li class="carousel-item">
+							<?php
+							}
+							$j += 1;
+							?>
+							
+								<img src="<?php echo $this->baseUrl().'/imgs/'.$produit['image'] ?>" alt="Modèle">
+								<input class="carousel-btn" type="submit" value="Aperçu rapide">
+							</li>
+				<?php
+						}
+					}
+					?>
+							</ul>					
+							<a class="carousel_controls carousel_produits-prev" id="<?php echo 'prev_'.$i?>" href="#"><span class="glyphicon glyphicon-chevron-left glyphicon-carousel"></span></a>
+							<a class="carousel_controls carousel_produits-next" id="<?php echo 'next_'.$i?>" href="#"><span class="glyphicon glyphicon-chevron-right glyphicon-carousel"></span></a>
+						</div>
+					</div>
+				<?php
+					$i += 1;
+					
+					if (fmod($i,2) == 1)
+					{
+						?>
+						<div class="row row_carousel billBoard">
+							<div class="col-x-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="billboard">
+									<img class="imgBillboard" src="<?php echo $this->baseUrl().'/imgs/img_billboard/billboard'.$k.'/img1.jpg' ?>" alt="Modèle 1">
+								</div>
+							</div>
+							
+							<div class="col-x-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="billboard last">
+									<img class="imgBillboard" src="<?php echo $this->baseUrl().'/imgs/img_billboard/billboard'.$k.'/img2.jpg' ?>" alt="Modèle 2">
+								</div>
+							</div>
+						</div>
+						<?php
+						$k += 1;
+					}
+				} 
+			}
+			?>
+		</div>
+		
+		<div class="col-xs-3" id="bloc-publicitaire">
+			<div class="row advert">
+				<div class="col-xs-12">
+					<p>Amazon utilise des cookies. <a href="#">En savoir plus.</a></p>
+					<hr>
+				</div>
+			</div>
+			<div class="row advert">
+				<div class="col-xs-12">
+					<img src="<?php echo $this->baseUrl().'/imgs/add_croix_rouge.png' ?>" alt="croix-rouge">
+					<hr>
+				</div>
+			</div>
+			<div class="row advert">
+				<div class="col-xs-12">
+					<img src="<?php echo $this->baseUrl().'/imgs/pub_chaise.jpg' ?>" alt="chaise">
+					<hr>
+				</div>
+			</div>
+			<div class="row advert">
+				<div class="col-xs-12">
+					<img src="<?php echo $this->baseUrl().'/imgs/add_stars_wars.png'?>" alt="pub_stars_wars">
+					<hr>
+				</div>
+			</div>
+			<div class="row advert top_5">
+				<div class="col-xs-12">
+					<p>Meilleures ventes de montres</p>
+					<span class="num_top_5">1</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel1/img1.jpg' ?>"><br>
+					<span class="num_top_5">2</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel1/img2.jpg' ?>"><br>
+					<span class="num_top_5">3</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel1/img3.jpg' ?>"><br>
+					<span class="num_top_5">4</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel1/img4.jpg' ?>"><br>
+					<span class="num_top_5">5</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel1/img5.jpg' ?>"><br>
+					<a href="#">Voir plus</a>
+					<hr>
+				</div>
+			</div>
+			<div class="row advert top_5">
+				<div class="col-xs-12">
+					<p>Meilleures ventes de consoles</p>
+					<span class="num_top_5">1</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel4/img1.jpg' ?>"><br>
+					<span class="num_top_5">2</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel4/img2.jpg' ?>"><br>
+					<span class="num_top_5">3</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel4/img3.jpg' ?>"><br>
+					<span class="num_top_5">4</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel4/img4.jpg' ?>"><br>
+					<span class="num_top_5">5</span><img src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel4/img5.jpg' ?>"><br>
+					<a href="#">Voir plus</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<div class="container-fluid reco">
+	<?php
+		if (is_array($this->categoriesProduitsReco) && count($this->categoriesProduitsReco) > 0)
+		{
+			foreach ($this->categoriesProduitsReco as $categorieReco)
+			{
+				?>
+				<div class="row reco-top" id="conteneur">
+					<h4><?php echo $categorieReco['nom'] ?>
+						<span class="pagination">Page <span class="pageNum">1</span> sur 3</span>
+					</h4>
+					<h6>Inspiré de votre historique de navigation</h6>
+					<div class="col-xs-12">
+						<div class="carousel_recommendations" id="carousel_reco">
+							<ul>
+				<?php
+				if (is_array($categorieReco['produits']) && count($categorieReco['produits']) > 0 )
+				{
+					$j = 0;
+					if ($j < count($categorieReco['produits']) - 3)
+					{
+						foreach ($categorieReco['produits'] as $produit) 
+						{ 
+							if ($j == 0)
+							{?>
+								<li class="carousel-item-reco first">
+							<?php 
+							}
+							
+							else if ($j == count($categorie['produits']) - 4)
+							{?>
+								<li class="carousel-item-reco last">
+							<?php 
+							}
+							else
+							{?>
+								<li class="carousel-item-reco">
+							<?php
+							}
+							$j += 1;
+							?>
+							
+								<img class="img_reco" src="<?php echo $this->baseUrl().'/imgs/'.$produit['image'] ?>" alt="Modèle 1">
+								</br></br><a href="#" class="liens_reco"><?php echo $produit['libelleProduit'] ?></a>
+								</br>							
+								<?php 
+								$k = 1;
+								while ($k <= floor($produit['note']))
+								{
+									?>
+									<img class="rating" src="<?php echo $this->baseUrl().'/imgs/star_full.png' ?>">
+									<?php
+									$k += 1;
+								}
+								$decimal = ($produit['note'] - floor($produit['note'])) * 10;
+								if ($decimal == 5)
+								{?>
+									<img class="rating" src="<?php echo $this->baseUrl().'/imgs/star_half_full.png' ?>">
+								<?php
+									$k +=1;
+								}								
+								while ($k <= 5)
+								{
+									?>
+									<img class="rating" src="<?php echo $this->baseUrl().'/imgs/star_empty.png' ?>">
+									<?php
+									$k += 1;
+								}
+								?>
+								
+								<a href="#" class="liens_reco"><?php echo $produit['nbAvis'] ?></span>
+								</br><span class="price_reco">EUR <?php echo $produit['prix']; 
+								if ($produit['isPremium'] == 1)
+								{
+								?> 
+									<img class="imgPremium" src="<?php echo $this->baseUrl().'/imgs/premium.png' ?>">
+								<?php
+								}
+								?>
+								</span>
+							</li>
+				<?php
+						}
+					}
+				?>
+						</ul>					
+							<a class="carousel_controls carousel_reco-prev" id="prev_reco" href="#"><span class="glyphicon glyphicon-chevron-left glyphicon-carousel-reco"></span></a>
+							<a class="carousel_controls carousel_reco-next" id="next_reco" href="#"><span class="glyphicon glyphicon-chevron-right glyphicon-carousel-reco"></span></a>
+					</div>
+				</div>
+			<?php
+				}
+			}
+		}
+	?>
+		<div class="col-xs-12 row-reco-bottom">
+			<div class="hidden-xs col-sm-4 col-md-5 col-lg-3" id="partie_gauche_reco">
+				<span class="elem_reco_gauche col-xs-3 col-sm-3 col-md-4">Vous </br>avez vu</span>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 img_vu">
+					<img class="content_vu" src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel_reco/img_mini1.jpg' ?>" alt="Modèle 1">
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 img_vu">
+					<img class="content_vu" src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel_reco/img_mini2.jpg' ?>" alt="Modèle 2">
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 img_vu">
+					<img class="content_vu" src="<?php echo $this->baseUrl().'/imgs/img_carousel/carousel_reco/img_mini3.jpg' ?>" alt="Modèle 3">
+				</div>
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-offset-1 col-lg-offset-6 col-md-6 col-lg-3" id="partie_droite_reco">
+				<div class="hidden-xs col-xs-3 col-sm-3 col-md-3" id="container_histo">
+					<a href="#" class="histo_reco"><span class="ico_histo_reco"> > </span> Afficher ou modifier votre historique de navigation</a>
+				</div>
+				<div class="col-xs-12 col-sm-9 col-md-9">
+					<span class="perso_reco">Voir les recommendations personnalisées</span></br>
+					<a class="btn_ident" id="btn_reco">Identifiez-vous</a>
+					<small>Nouveau client? <a class="lien_enr">Commencer ici</a></small>
+				</div>
+			</div>
+		</div>
+		
+	</div>	
+	<div class="row">
+		<a id="lienTop" href="#top">
+			<div class="container_to_top">
+				<span class="to_top">Retour en haut</span>
+			</div>
+		</a>
+	</div>
+</div>
