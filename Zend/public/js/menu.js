@@ -37,31 +37,7 @@ $(document).ready(function(){
         target: '+=8'
     });
 	//-------------------------------------//
-	
-	
-	
-	//Gestion pagination du carousel recommenations
-	$("#prev_reco").click(function(){
-        var compteur = $('.pageNum').text();
-		if (compteur > 1)
-			compteur --;
-		else
-			compteur = 3;
-		$('.pageNum').text(compteur);
-    });
-	
-	$("#next_reco").click(function(){
-        var compteur = $('.pageNum').text();
-		if (compteur < 3)
-			compteur ++;
-		else
-			compteur = 1;
-		$('.pageNum').text(compteur);
-    });
-	//-----------------------------------//
-	
-	
-	
+
 	$('.elem_menu_top').hover(function () {
 		$(this).children(".menu_dropdown").stop(true, false).slideDown();
 		},
